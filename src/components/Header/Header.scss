@@ -1,4 +1,4 @@
-$navbar-bg-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+$navbar-bg-image: linear-gradient(to right, #00dbde 0%, #fc00ff 100%);;
 $navbar-text-color: black;
 $navbar-hover-color: #ddd;
 $navbar-active-color: #aaa;
@@ -8,7 +8,10 @@ $navbar-item-font-size: 1rem;
 $navbar-item-gap: 1rem;
 $breakpoint-mobile: 768px;
 
+body{
+  background-color: #121212;
 
+}
 .navbar {
   display: flex;
   justify-content: space-between;

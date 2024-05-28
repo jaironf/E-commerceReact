@@ -16,7 +16,7 @@ const Products = () => {
          <div className='card-content'>
           <h2 className='card-name'>{products.name}</h2>
           <p className='card-genre'>{products.genre}</p>
-          <h4 className='card-price'>{products.price}</h4>
+          <h4 className='card-price'>{products.price + ' €'}</h4>
         </div>
         </div>
       );
