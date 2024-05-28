@@ -10,7 +10,7 @@ const Header = () => {
             <span className='navbar-item'><Link to='/'>Home</Link></span>
             <span className='navbar-item'><Link to='/products'>Products</Link></span>
             <span className='navbar-item'><Link to='/login'>Login</Link></span>
-            {/* <span className='navbar-item'><Link to='/login'>Login</Link></span> */}
+            <span className='navbar-item'><Link to='/profile'>Profile</Link></span>
         </nav>
     </div>
   )
