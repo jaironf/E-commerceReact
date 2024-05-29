@@ -18,15 +18,30 @@ export const UserContext = createContext(initialState);
 export const UserProvider = ({children}) =>{
     const [state, dispatch] = useReducer(UserReducer, initialState)
 
+    const userRegistre = async () => {
+      try {
+        const res = await axios.post(API_URL, user)
+        dispatch({
+          type:'REGISTRE',
+          payload: res.data,
+        })
+        if(res.data){
+          localStorage.setItem('user', res.data.user)
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
 
     const login = async (user) => {
+      console.log(user);
         try {
             const res = await axios.post(API_URL + '/login', user);
             dispatch({
                 type: 'LOGIN',
                 payload: res.data,
             });
-           
            if(res.data){
             localStorage.setItem('token', res.data.token)
            } 
@@ -36,9 +51,9 @@ export const UserProvider = ({children}) =>{
     };
 
     const getLoggedUserInfo = async () => {
-        const token = localStorage.getItem("token");
+        let token = localStorage.getItem("token");
         try {
-          const res = await axios.get(API_URL + "/userInfo", {
+          const res = await axios.get(API_URL + "/user", {
             headers: {
               Authorization: token,
             },
@@ -58,6 +73,7 @@ export const UserProvider = ({children}) =>{
           value={{
             token: state.token,
             user: state.user,
+            userRegistre,
             login,
             getLoggedUserInfo,
           }}
