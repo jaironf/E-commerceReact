@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { UserContext } from "../../context/UserContext/UserState";
 import './Profile.scss'
+import Logout from "../Logout/Logout";
 
 const Profile = () => {
   const { getLoggedUserInfo, user, token } = useContext(UserContext);
@@ -50,10 +51,11 @@ const Profile = () => {
 
     )
   }
+    
   return (
     <div className="profile-container">
       <div className="profile-card">
-        <h2>Enjoy</h2>
+       <h2>Enjoy</h2>
         <img className='profile-avatar' src="src/assets/AvatarPerfil.png" alt="" />
         <p className="heading-profile">{user.name}</p>
         <p>{user.email}</p>
