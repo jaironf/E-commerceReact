@@ -1,10 +1,11 @@
 import React, { useContext, useEffect } from "react";
 import { UserContext } from "../../context/UserContext/UserState";
 import './Profile.scss'
-import Logout from "../Logout/Logout";
+import { message, notification } from "antd";
+
 
 const Profile = () => {
-  const { getLoggedUserInfo, user, token } = useContext(UserContext);
+  const { getLoggedUserInfo, user, token, password } = useContext(UserContext);
 
   useEffect(() => {
     getLoggedUserInfo();
@@ -51,6 +52,7 @@ const Profile = () => {
 
     )
   }
+
     
   return (
     <div className="profile-container">

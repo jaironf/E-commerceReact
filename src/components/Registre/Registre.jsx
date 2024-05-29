@@ -47,7 +47,7 @@ const Registre = () => {
     <div className="form-container">
       <form className="form" onSubmit={handleSubmit}>
         <div className='form-group'>
-            <label name="name">Name
+            <label name="name">Username
                 <input name='name' id='name' type="text" placeholder='Insert your name' required />
             </label>
         </div>
