@@ -6,6 +6,7 @@ import Registre from './components/Registre/Registre'
 import Products from './components/Products/Products'
 import Login from './components/Login/Login'
 import Profile from './components/Profile/Profile'
+import Footer from './components/Footer/Footer'
 import { ProductsProvider } from './context/ProductsContext/ProductsState'
 import { UserProvider } from './context/UserContext/UserState'
 
@@ -24,7 +25,8 @@ function App() {
               <Route path='/login' element={<Login />} />
               <Route path='/profile' element={<Profile />} />
             </Routes>
-
+            <div className='Space'></div>
+            <Footer/>
           </ProductsProvider>
         </BrowserRouter>
       </UserProvider>
