@@ -18,21 +18,9 @@ export const UserContext = createContext(initialState);
 export const UserProvider = ({children}) =>{
     const [state, dispatch] = useReducer(UserReducer, initialState)
 
-    const userRegistre = async () => {
-      try {
-        const res = await axios.post(API_URL, user)
-        dispatch({
-          type:'REGISTRE',
-          payload: res.data,
-        })
-        if(res.data){
-          localStorage.setItem('user', res.data.user)
-        }
-      } catch (error) {
-        console.error(error);
-      }
+    const userRegistre = async (user) => {
+        const res = await axios.post(API_URL, user)     
     }
-
 
     const login = async (user) => {
       console.log(user);
