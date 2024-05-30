@@ -24,6 +24,19 @@ export const ProductsProvider = ({children}) => {
         return res;
     };
 
+    const addCart = (product) =>{
+        dispatch({
+            type: 'ADD_CART',
+            payload: product
+        })
+    };
+
+    const clearCart = () => {
+        dispatch({
+            type:'CLEAR_CART'
+        })
+    };
+    
     return(
         <ProductsContext.Provider
             value={{
