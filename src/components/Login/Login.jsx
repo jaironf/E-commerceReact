@@ -31,6 +31,7 @@ const Login = () => {
   return (
     <div className='container-div'>
     <div className="form-container">
+      <h2>Login</h2>
       <form className="form">
         <div className="form-group">
           <label name="email">Email

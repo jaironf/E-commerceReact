@@ -45,6 +45,7 @@ const Registre = () => {
   return (
     <div className='container-div'>
     <div className="form-container">
+      <h2>Sign up</h2>
       <form className="form" onSubmit={handleSubmit}>
         <div className='form-group'>
             <label name="name">Username
