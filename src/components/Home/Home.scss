@@ -17,6 +17,13 @@
     height: auto;
     margin-bottom: 2rem; 
   }
+
+  .btn-div{
+    display: flex;
+    width: 100px;
+    gap: 2rem;
+    
+  }
   
 .btn-home {
     --bg: #2be174;
@@ -29,6 +36,8 @@
     padding: 0.8em 2em;
     background: var(--bg);
     transition: 0.2s;
+    font-family: sans-serif;
+    
   }
   
   .btn-home:hover {

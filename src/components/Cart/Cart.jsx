@@ -20,7 +20,22 @@ const Cart = () => {
 
 
   return (
-    <div></div>
+    <div>
+         <button onClick={clearCart}>Clear Cart</button>
+      <button onClick={()=> {
+        orderService.createOrder(cart)
+        clearCart()
+        }}>Create Order</button>
+
+      {cart.map((product) => {
+        return (
+          <div key={product._id}>
+            <h2>{product.name}</h2>
+            <p>{product.price}</p>
+          </div>
+        );
+      })}
+    </div>
   )
 }
 
