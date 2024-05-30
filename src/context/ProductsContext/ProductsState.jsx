@@ -5,8 +5,18 @@ import { createContext, useReducer } from "react";
 
 const API_URL = 'http://localhost:3001';
 
+const cart = localStorage.getItem('cart') || [];
+let products = []
+
+try {
+    products = JSON.parse(cart)
+} catch (error) {
+    console.error('Error parsing cart', error);
+}
+
 const initialState = {
-    products: []
+    products: [],
+    cart:cart
 };
 
 export const ProductsContext = createContext(initialState)
@@ -41,6 +51,7 @@ export const ProductsProvider = ({children}) => {
         <ProductsContext.Provider
             value={{
                 products: state.products,
+                cart: state.cart,
                 getProducts,
                 addCart,
                 clearCart,

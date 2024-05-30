@@ -1,18 +1,44 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import './Header.scss'
-import {Link} from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { UserContext } from '../../context/UserContext/UserState'
+import { ProductsContext } from '../../context/ProductsContext/ProductsState'
+import {ShoppingCartOutlined} from '@ant-design/icons'
+import { Badge } from 'antd'
+
+
 
 const Header = () => {
+  const { token, logout } = useContext(UserContext);
+  const { cart } = useContext(ProductsContext)
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart))
+  }, [cart])
+
+
   return (
     <div className='navbar'>
-        <span className='navbar-brand'><img src="src/assets/LogoE-commerce.png" alt="logo" className='logo-header'/></span>
-        <nav className='navbar-nav'>
-            <span className='navbar-item'><Link to='/'>Home</Link></span>
-            <span className='navbar-item'><Link to='/registre'>Sign up</Link></span>
-            <span className='navbar-item'><Link to='/products'>Products</Link></span>
-            <span className='navbar-item'><Link to='/login'>Login</Link></span>
-            <span className='navbar-item'><Link to='/profile'>Profile</Link></span>
-        </nav>
+        <span className='navbar-brand'><img src="src/assets/LogoE-commerce.png" alt="logo" className='logo-header' /></span>
+         <nav className='navbar-nav'>
+           <Link to='/'>Home</Link>
+           <Link to='/products'>Products</Link>{token ? (
+            <>
+            <Link to='/profile'>Profile</Link>
+            <Link to='/cart'>Cart<Badge count={cart.length} size='small'><ShoppingCartOutlined/></Badge></Link>
+            <Link
+              onClick={() =>{
+                logout();
+                navigate('/login');
+              }}>
+                Logout
+            </Link>
+            </>
+           ) : (
+            <Link to='/login'>Login</Link>
+           )}
+      </nav>
     </div>
   )
 }
