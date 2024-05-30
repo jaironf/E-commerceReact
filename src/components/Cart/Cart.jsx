@@ -49,7 +49,7 @@ const Cart = () => {
       <div className="container-cart">
       <List
         size="small"
-        header={<h2 className="title">Cart</h2>}
+        header={<h2 className="cart-title">Your Products</h2>}
         footer={
           <div className="btn-link-container">
             <button className="btn-cart" onClick={() => clearCart()}>
@@ -63,14 +63,13 @@ const Cart = () => {
         bordered
         dataSource={productsList}
         renderItem={(item) => {
-          const qty = productsMap.get(item.id) || 1;
           return (
             <div className="cart-table-flex">
               <table key={item.id}>
                 <tbody>
                   <tr>
                     <td colSpan="6" className="table-header">
-                      <h4>{item.name}</h4>
+                      <h4>{item.name} - {item.price} €</h4>
                     </td>
                   </tr>
                 </tbody>
