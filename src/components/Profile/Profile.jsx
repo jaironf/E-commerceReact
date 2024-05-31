@@ -13,13 +13,6 @@ const Profile = () => {
   }, [token]);
 
   if (!user) {
-    notification.error({
-      message: 'User not found',
-      description: 'Please insert a valid user'
-    })
-    setTimeout(() => {
-      navigate('/')
-    }, 2000)
     return (
       <div className="loader">
         <div className="container">
@@ -57,8 +50,9 @@ const Profile = () => {
         </div>
       </div>
     )
-  }
+    
 
+  }
     
   return (
     <div className="profile-container">

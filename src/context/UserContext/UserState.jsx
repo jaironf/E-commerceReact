@@ -33,6 +33,7 @@ export const UserProvider = ({children}) =>{
            if(res.data){
             localStorage.setItem('token', res.data.token)
            } 
+           return res
         } catch (error) {
             console.error(error);
         }
@@ -67,7 +68,7 @@ export const UserProvider = ({children}) =>{
           payload: res.data,
         });
         if(res.data){
-          localStorage.removeItem('token')
+          localStorage.clear
         }
       };
 

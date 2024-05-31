@@ -2,10 +2,10 @@ import React, { useContext, useState } from 'react'
 import { ProductsContext } from '../../context/ProductsContext/ProductsState'
 import { Button, Empty, message, List } from 'antd';
 import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import './Cart.scss'
+import orderService from '../../services/OrderService';
 
-const API_URL = 'http://localhost:3001/orders'
+
 
 const Cart = () => {
     const {cart, clearCart} = useContext(ProductsContext);
@@ -13,9 +13,7 @@ const Cart = () => {
     const [productsMap, setProductsMap] = useState(new Map());
 
     const order = async () => {
-      const token = localStorage.getItem('token')
-
-      await axios.post(API_URL, {ProductId: cart.map((product) => product.id)}, {headers: {Authorization: token}});
+orderService.createOrder(cart)
 
       message.success('Order created succesfully');
       setTimeout(() =>{

@@ -22,10 +22,16 @@ const Login = () => {
   }
   
   const navigate = useNavigate()
-    const onSubmit = (e) => {
+    const onSubmit = async(e) => {
       e.preventDefault()
-      login(data)
-      navigate("/profile")
+      try {
+        const res = await login(data)
+        if(res.data){
+          navigate("/profile")
+        }
+      } catch (error) {
+        console.error(error)
+      }
     };
 
   return (
