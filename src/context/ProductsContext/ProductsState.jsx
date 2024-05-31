@@ -5,14 +5,16 @@ import { createContext, useReducer } from "react";
 
 const API_URL = 'http://localhost:3001';
 
-const cart = localStorage.getItem('cart') || [];
-let products = []
+// const cart = localStorage.getItem('cart') || [];
+// let products = []
 
-try {
-    products = JSON.parse(cart)
-} catch (error) {
-    console.error('Error parsing cart', error);
-}
+// try {
+//     products = JSON.parse(cart)
+// } catch (error) {
+//     console.error('Error parsing cart', error);
+// }
+ const cart = JSON.parse(localStorage.getItem('cart') || [])
+
 
 const initialState = {
     products: [],

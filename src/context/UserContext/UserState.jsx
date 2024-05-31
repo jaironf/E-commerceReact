@@ -6,8 +6,8 @@ import { createContext, useReducer } from "react";
 const token = localStorage.getItem('token') || '';
 
 const initialState = {
-    token: '',
-    user: ''
+    token: token,
+    user: null
 }
 
 const API_URL = 'http://localhost:3001/users';

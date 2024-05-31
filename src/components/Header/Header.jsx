@@ -30,7 +30,7 @@ const Header = () => {
             <Link
               onClick={() =>{
                 logout();
-                navigate('/login');
+                navigate('/');
               }}>
                 Logout
             </Link>

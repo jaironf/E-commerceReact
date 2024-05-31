@@ -48,7 +48,7 @@ const Cart = () => {
     <div className="container-flex">
       <div className="container-cart">
       <List
-        size="small"
+        size="medium"
         header={<h2 className="cart-title">Your Products</h2>}
         footer={
           <div className="btn-link-container">

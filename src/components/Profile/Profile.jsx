@@ -2,16 +2,24 @@ import React, { useContext, useEffect } from "react";
 import { UserContext } from "../../context/UserContext/UserState";
 import './Profile.scss'
 import { message, notification } from "antd";
+import { useNavigate } from "react-router-dom";
 
 
 const Profile = () => {
   const { getLoggedUserInfo, user, token, password } = useContext(UserContext);
-
+  const navigate = useNavigate()
   useEffect(() => {
     getLoggedUserInfo();
   }, [token]);
 
   if (!user) {
+    notification.error({
+      message: 'User not found',
+      description: 'Please insert a valid user'
+    })
+    setTimeout(() => {
+      navigate('/')
+    }, 2000)
     return (
       <div className="loader">
         <div className="container">
@@ -48,8 +56,6 @@ const Profile = () => {
           </div>
         </div>
       </div>
-
-
     )
   }
 

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react'
-import {ProductsContext} from '../../context/ProductsContext/ProductsState'
 import './Products.scss'
+import { ProductsContext } from '../../context/ProductsContext/ProductsState';
 
 const Products = () => {
   const {products, getProducts, addCart} = useContext(ProductsContext);
@@ -9,12 +9,16 @@ const Products = () => {
     getProducts();
   }, [])
 
+  if(products.length == 0){
+    return <p>cargando ....</p>
+  }
+
   
   return <div className='products-container'>{products.map((products) => {
       return (
-        <div className="card">
+        <div className="card" key={products.id}>
         <img className="card-img" src="src/assets/LogoE-commerce.png" alt="logo" />
-        <div className="card-info" key={products.id}>
+        <div className="card-info" >
           <p className="text-title">{products.name}</p>
           <p className="text-body">{products.genre}</p>
         </div>

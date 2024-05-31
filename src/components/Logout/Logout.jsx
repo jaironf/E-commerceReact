@@ -1,15 +1,32 @@
 import React, { useContext } from 'react'
 import { UserContext } from '../../context/UserContext/UserState'
 import './Logout.scss'
+import { ProductsContext } from '../../context/ProductsContext/ProductsState'
+import { useNavigate } from 'react-router-dom'
+import { notification } from 'antd'
 
 
 const Logout = () => {
 const {token, Logout} = useContext(UserContext)
+const {clearCart} = useContext(ProductsContext)
+const navigate = useNavigate();
+
 
 const loggedUser = () =>{
-    Logout()
+    Logout(),
+    clearCart(),
+    navigate('/')
 }
 
+if (!token) {
+  notification.error({
+    message: 'User not found',
+    description: 'Please insert a valid user'
+  })
+  setTimeout(() => {
+    navigate('/')
+  }, 2000)
+}
 
 
   return (

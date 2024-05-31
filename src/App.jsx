@@ -15,23 +15,23 @@ import { UserProvider } from './context/UserContext/UserState'
 function App() {
   return (
     <>
-      <UserProvider>
-        <BrowserRouter>
+      <BrowserRouter>
+        <UserProvider>
           <ProductsProvider>
             <Header />
             <Routes>
               <Route path='/' element={<Home />} />
               <Route path='/registre' element={<Registre />} />
               <Route path='/products' element={<Products />} />
-              <Route path='/cart' element={<Cart/>} />
+              <Route path='/cart' element={<Cart />} />
               <Route path='/login' element={<Login />} />
               <Route path='/profile' element={<Profile />} />
             </Routes>
             <div className='Space'></div>
-            <Footer/>
+            <Footer />
           </ProductsProvider>
-        </BrowserRouter>
-      </UserProvider>
+        </UserProvider>
+      </BrowserRouter>
     </>
   )
 }
