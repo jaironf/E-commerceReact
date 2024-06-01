@@ -5,57 +5,57 @@ import './Login.scss'
 
 
 const Login = () => {
-    const {login} = useContext(UserContext)
-    // const emailRegex = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/
+  const { login } = useContext(UserContext)
+  // const emailRegex = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/
 
-  const [data , setdata] = useState({
-    email : "",
-    password : ""
+  const [data, setdata] = useState({
+    email: "",
+    password: ""
   })
 
   const getData = (e) => {
     setdata({
       ...data,
-      [e.target.name]:e.target.value
+      [e.target.name]: e.target.value
     })
 
   }
-  
+
   const navigate = useNavigate()
-    const onSubmit = async(e) => {
-      e.preventDefault()
-      try {
-        const res = await login(data)
-        if(res.data){
-          navigate("/profile")
-        }
-      } catch (error) {
-        console.error(error)
+  const onSubmit = async (e) => {
+    e.preventDefault()
+    try {
+      const res = await login(data)
+      if (res.data) {
+        navigate("/profile")
       }
-    };
+    } catch (error) {
+      console.error(error)
+    }
+  };
 
   return (
     <div className='container-div'>
-    <div className="form-container">
-      <h2>Login</h2>
-      <form className="form">
-        <div className="form-group">
-          <label name="email">Email
-          <input name="email" id="email" type="text" placeholder='Insert your email' onChange={getData} required/>
-          </label>
-        </div>
-        <div className="form-group">
-          <label name="textarea">Password
-          <input type="password" name='password' id='password' placeholder='Insert your password' onChange={getData} required/>
-          </label>
-        </div>
-        <button onClick={onSubmit}>Login</button>
-        {/* <h4 className='validation-msg'>{message}</h4> */}
-      </form>
-    </div>
+      <div className="form-container">
+        <h2>Login</h2>
+        <form className="form">
+          <div className="form-group">
+            <label name="email">Email
+              <input name="email" id="email" type="text" placeholder='Insert your email' onChange={getData} required />
+            </label>
+          </div>
+          <div className="form-group">
+            <label name="textarea">Password
+              <input type="password" name='password' id='password' placeholder='Insert your password' onChange={getData} required />
+            </label>
+          </div>
+          <button onClick={onSubmit}>Login</button>
+          {/* <h4 className='validation-msg'>{message}</h4> */}
+        </form>
+      </div>
     </div>
   )
-  
+
 }
 
 export default Login

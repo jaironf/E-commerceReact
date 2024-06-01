@@ -10,7 +10,7 @@ const Products = () => {
   }, [])
 
   if(products.length == 0){
-    return <p>cargando ....</p>
+    return <p>cargando...</p>
   }
 
   

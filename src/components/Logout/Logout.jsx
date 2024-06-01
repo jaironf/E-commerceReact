@@ -19,10 +19,6 @@ const loggedUser = () =>{
 }
 
 if (!token) {
-  notification.error({
-    message: 'User not found',
-    description: 'Please insert a valid user'
-  })
   setTimeout(() => {
     navigate('/')
   }, 2000)
