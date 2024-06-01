@@ -12,7 +12,7 @@ const initialState = {
 
 const API_URL = 'http://localhost:3001/users';
 
-export const UserContext = createContext(initialState);
+export const UserContext = createContext(initialState, UserReducer);
 
 
 export const UserProvider = ({children}) =>{
@@ -39,38 +39,57 @@ export const UserProvider = ({children}) =>{
         }
     };
 
+
     const getLoggedUserInfo = async () => {
         let token = localStorage.getItem("token");
         try {
-          const res = await axios.get(API_URL + "/user", {
+          const res = await axios.get(API_URL + '/user', {
             headers: {
               Authorization: token,
             },
           });
           dispatch({
             type:"GET_USER_INFO",
-            payload:res.data
+            payload: res.data
           })
         } catch (error) {
           console.error(error);
         }
       };
 
-      const logout = async () =>{
-        let token = localStorage.getItem('token');
-        const res = await axios.delete(API_URL + '/logout', {
-          headers: {
-            Authorization: token,
-          }
-        });
-        dispatch({
-          type: 'LOGOUT',
-          payload: res.data,
-        });
-        if(res.data){
-          localStorage.clear
+      const logout = async () => {
+        try {
+          let token = localStorage.getItem('token');
+          const res = await axios.delete(API_URL + '/logout', {
+            headers: {
+              Authorization: token,
+            },
+          });
+          dispatch({ 
+            type: 'LOGOUT',
+            payload: res.data
+          });
+          localStorage.clear();
+        } catch (error) {
+          console.error('Error during logout:', error);
         }
       };
+
+      // const logout = async () =>{
+      //   let token = localStorage.getItem('token');
+      //   const res = await axios.delete(API_URL + '/logout', {
+      //     headers: {
+      //       Authorization: token,
+      //     }
+      //   });
+      //   dispatch({
+      //     type: 'LOGOUT',
+      //     // payload: res.data,
+      //   });
+      //   if(res.data){
+      //     localStorage.clear()
+      //   }
+      // };
 
 
     return (

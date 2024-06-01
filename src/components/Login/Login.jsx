@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext/UserState';
 import './Login.scss'
+import { notification } from 'antd';
 
 
 const Login = () => {
@@ -33,6 +34,33 @@ const Login = () => {
       console.error(error)
     }
   };
+
+//MIRAR COMO HACER QUE FUNCIONE ESTAS NOTIFICACIONES
+
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+//     const email = e.target.email.value;
+//     const password = e.target.password.value;
+
+//   if(!email || !password){
+//     notification.error({
+//       message: 'Login failed',
+//       description: 'Invalid email or password'
+//     });
+//   }else{
+//     try {
+//       notification.success({
+//         message: 'Successfully logged in',
+//         description: 'Welcome back'
+//       })
+//     } catch (error) {
+//       notification.error({
+//         message: 'Login failed',
+//         description: 'Invalid email or password'
+//       })
+//     }
+//   }
+// }
 
   return (
     <div className='container-div'>

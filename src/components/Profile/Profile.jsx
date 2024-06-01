@@ -1,12 +1,12 @@
 import React, { useContext, useEffect } from "react";
 import { UserContext } from "../../context/UserContext/UserState";
 import './Profile.scss'
-import { message, notification } from "antd";
+import { message, notification, Card, Collapse } from "antd";
 import { useNavigate } from "react-router-dom";
 
 
 const Profile = () => {
-  const { getLoggedUserInfo, user, token, password } = useContext(UserContext);
+  const { getLoggedUserInfo, user, token} = useContext(UserContext);
   const navigate = useNavigate()
   useEffect(() => {
     getLoggedUserInfo();
@@ -50,10 +50,8 @@ const Profile = () => {
         </div>
       </div>
     )
-    
-
   }
-    
+
   return (
     <div className="profile-container">
       <div className="profile-card">
