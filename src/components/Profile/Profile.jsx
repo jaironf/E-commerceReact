@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { UserContext } from "../../context/UserContext/UserState";
 import './Profile.scss'
-import { message, notification, Card, Collapse } from "antd";
+import { Collapse } from "antd";
 import { useNavigate } from "react-router-dom";
 
 
@@ -11,6 +11,27 @@ const Profile = () => {
   useEffect(() => {
     getLoggedUserInfo();
   }, [token]);
+
+  const orderInfo = user?.Orders?.map((order) => ({
+    key: order.id,
+    label: (
+      <div className="label-container">
+        <span>Order id: {order.id}</span>
+        <span>Items: {order.items.length}</span>
+        <span>Price: {order.totalPrice.toFixed(2)} €</span>
+      </div>
+    ),
+    content: (
+      <div className="order-details">
+        {order.items.map(item => (
+          <div key={item.id} className="order-item">
+            <span>{item.name} - {item.quantity} x {item.price.toFixed(2)} €</span>
+          </div>
+        ))}
+      </div>
+    )
+  })) || [];
+
 
   if (!user) {
     return (
@@ -53,6 +74,7 @@ const Profile = () => {
   }
 
   return (
+    <>
     <div className="profile-container">
       <div className="profile-card">
        <h2>Enjoy</h2>
@@ -62,6 +84,17 @@ const Profile = () => {
         <p>SkullGaming</p>
       </div>
     </div>
+    <div className="order-container">
+        <h2>Your Orders</h2>
+        <Collapse>
+          {orderInfo.map(order => (
+            <Panel header={order.label} key={order.key}>
+              {order.content}
+            </Panel>
+          ))}
+        </Collapse>
+      </div>
+    </>
   );
 };
 
