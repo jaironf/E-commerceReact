@@ -14,7 +14,7 @@ const navigate = useNavigate();
 const handleLogout = () =>{
     logout(),
     clearCart(),
-    navigate('/login')
+    navigate('/')
 }
 
   return (

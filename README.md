@@ -42,3 +42,38 @@ Este es un proyecto de aplicación de e-commerce creado con React. La aplicació
 - **Realizar pedido**: Ve a la página del carrito y realiza un pedido.
 - **Ver perfil**: En la página de perfil podras ver una card con tu nombre y correo.
 
+
+## Imagen Home
+![img](src/assets/HomeImg.png)
+
+## Imagen Sign up
+
+![img](src/assets/SignUpImg.png)
+
+## Imagen Products
+
+![img](src/assets/ProductsImg.png)
+
+## Imagen Profile
+
+![img](src/assets/ProfileImg.png)
+
+## Imagen Cart
+
+![img](src/assets/CartImg.png)
+
+
+## Contribuciones
+Las contribuciones son bienvenidas. Si deseas contribuir, por favor sigue los siguientes pasos:
+
+- Haz un fork del repositorio.
+- Crea una nueva rama (`git checkout -b feature/nueva-funcionalidad`).
+- Realiza los cambios necesarios y haz commit (`git commit -m 'Añadir nueva funcionalidad'`).
+- Haz push a la rama (`git push origin feature/nueva-funcionalidad`).
+- Abre un Pull Request.
+
+
+## Desarrollado por:
+
+- **Jairo Núñez**
+- **Email**: jaironf.94@gmail.com
